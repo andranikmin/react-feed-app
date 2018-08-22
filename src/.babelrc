@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/es2015",
+    "@babel/react",
+    "@babel/stage-0"
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "@babel/runtime"
+    }],
+    ["@babel/plugin-transform-classes", { "spec": true }]
+  ]
+}
