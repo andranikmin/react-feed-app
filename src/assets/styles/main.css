@@ -414,6 +414,32 @@ body {
     background-color: #008ac7;
 }
 
+.github_page {
+    background: linear-gradient(#5e666f, #505050);
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 13px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.github_link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github_link:hover{
+    text-decoration: underline;
+}
+
+.github_icon {
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 768px) {
     .articles_container{
         flex-direction: column;

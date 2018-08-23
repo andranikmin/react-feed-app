@@ -12,6 +12,7 @@ import FavoritesProfile from './FavoritesProfile';
 import Article from './Article';
 
 import { getProfile, logOut } from '../store/login/actions';
+import github_icon from '../assets/images/github_icon.png';
 
 class App extends Component {
     constructor() {
@@ -92,6 +93,12 @@ class App extends Component {
                     <Route path="/@:username/favorites" component={FavoritesProfile} />
                     <Route path="/@:username" component={Profile} />
                 </Switch>
+                <div className="github_page">
+                    <a className="github_link" target="_blank" href="https://github.com/andranikmin/react-feed-app">
+                        <img className="github_icon" src={github_icon} />
+                        <div>Fork on GitHub</div>
+                    </a>
+                </div>
             </div>
         );
     };
