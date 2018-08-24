@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TagList = ({ tagData, fetching, onTagClick }) => {
+const TagList = ({ tagData, fetching, onTagClick, selectedTag }) => {
     const handleTagClick = tag => (
         onTagClick(tag)
     );
@@ -18,7 +18,7 @@ const TagList = ({ tagData, fetching, onTagClick }) => {
             <h3>Popular tags</h3>
             <div className="tags">
                 {tagData.map(tag => (
-                    <span className="tag" onClick={() => handleTagClick(tag)} key={tag}>
+                    <span className={`tag ${tag === selectedTag ? "active" : ""}`} onClick={() => handleTagClick(tag)} key={tag}>
                         {tag}
                     </span>
                 ))}

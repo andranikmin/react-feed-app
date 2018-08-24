@@ -20,7 +20,7 @@ class FavoritesProfile extends Component {
         if(!profile) {
             return null;
         }
-        
+        const user = localStorage.getItem('user');
         return (
             <div className="favorite_page">
                 <div className="profile_page_banner">
@@ -31,12 +31,12 @@ class FavoritesProfile extends Component {
                     <div className="articles_filter">
                         <div className="filter_item">
                             <Link to={`/@${profile.username}`}>
-                                My Articles
+                                { user && user === profile.username ? "My Articles" : "Articles"}
                             </Link>
                         </div>
                         <div className="filter_item active">
                             <Link to={`/@${profile.username}/favorites`}>
-                                Favorited Articles
+                                {user && user === profile.username ? "My Favorite Articles" : "Favorite Articles"}
                             </Link>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
     getProfileData(user){ 
         dispatch(getProfileData(user))
     },
-    setFavorite(slug, favorite, page = 'favorite') { 
+    setFavorite(slug, favorite, page = 'favorite' ) { 
         dispatch(setFavorite(slug, favorite, page))
     }
 });

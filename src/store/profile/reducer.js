@@ -42,14 +42,20 @@ const profile = (state = initialState, action) => {
             return initialState;
         }
         case PROFILE_FAVORITES_SUCCESS: {
-            const clonedFavoritesArticleData = [...state.favoritesArticleData];
-            const index = clonedFavoritesArticleData.findIndex(article => article.slug === action.data.article.slug);
-            clonedFavoritesArticleData.splice(index, 1);
-            
-            return {
-                ...state,
-                favoritesArticleData : clonedFavoritesArticleData
-            };
+
+                return {
+                    ...state,
+                    favoritesArticleData: state.favoritesArticleData.map(article => {
+                        if (article.slug === action.data.article.slug) {
+                            return {
+                                ...article,
+                            favorited: action.data.article.favorited,
+                            favoritesCount: action.data.article.favoritesCount
+                            };
+                        }
+                        return article;
+                    }),
+                };
         }
         case PROFILE_FAVORITES_ARTICLE: {
             return {

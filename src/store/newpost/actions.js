@@ -14,6 +14,7 @@ export const publishArticleSucces = (article) => {
 }
 
 export const publishArticleFailure = (errors) => {
+
     return {
         type: PUBLISH_ARTICLE_FAILURE,
         errors

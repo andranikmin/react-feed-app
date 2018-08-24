@@ -19,11 +19,13 @@ class NewPost extends Component {
     }
 
     showError = (errors) => {
+        const errors_array = Object.entries(errors);
+
         return (
             <div className="error">
-                {errors.entries(([error, value], index) => (
+                {errors_array.map(([error, value], index) => (
                     <div key={error}>
-                       * {error} {value}
+                       * {error} {value[0]}
                     </div> 
                 ))} 
             </div>
@@ -40,7 +42,7 @@ class NewPost extends Component {
         return (
             <div className="container">
                 <div className="new_article">
-                    {publishErrors && this.showErrors(publishErrors)}
+                    {publishErrors && this.showError(publishErrors)}
                     <div className="new_article_item">
                         <input className="new_article_input" placeholder="Article Title" ref={el => this.articleTitle = el}/>
                     </div>
@@ -53,7 +55,9 @@ class NewPost extends Component {
                     <div className="new_article_item">
                         <input className="new_article_input" placeholder="Enter tags" ref={el => this.articleTags = el}/>
                     </div>
-                    <button className="submit_button" onClick={this.handleClickPublishArticle}>Publish Article</button>
+                    <div className="new_article_item button">
+                        <button className="submit_button" onClick={this.handleClickPublishArticle}>Publish Article</button>
+                    </div>
                 </div>
             </div>
         );

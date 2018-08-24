@@ -20,11 +20,9 @@ class Register extends Component {
 
         return (
             <div className="error">
-                <ul>
                 {errorsKeys.map((error, index) => (
-                    <li key={error}>{error} {errorsValues[index][0]}</li> 
+                    <div key={error}>* {error} {errorsValues[index][0]}</div> 
                 ))} 
-                </ul>
             </div>
         );
     }
@@ -37,23 +35,27 @@ class Register extends Component {
         } 
 
         return (
-            <div className="form_box">
-                <h1>Sign Up</h1>
-                <Link to="/login"><p>Have an account?</p></Link>
-                {registerError && this.showError()}
-                <div className="form_item">
-                    <input className="username_item" placeholder="Username" ref={el => this.usernameValue = el}/>
-                </div>
-                <div className="form_item">
-                    <input className="email_input" placeholder="Email" ref={el => this.emailValue = el}/>
-                </div>
-                <div className="form_item">
-                    <input className="password_input" type="password" placeholder="Password" ref={el => this.passwordValue = el}/>
-                </div>
-                <button className="submit_button" onClick={this.handleClickCheckRegister}>
-                    Sign In
-                </button> 
-            </div>  
+            <form onSubmit={this.handleClickCheckRegister}>
+                <div className="form_box">
+                    <h1>Sign Up</h1>
+                    <Link to="/login"><p>Have an account?</p></Link>
+                    {registerError && this.showError()}
+                    <div className="form_item">
+                        <input className="username_item" placeholder="Username" ref={el => this.usernameValue = el}/>
+                    </div>
+                    <div className="form_item">
+                        <input className="email_input" placeholder="Email" ref={el => this.emailValue = el}/>
+                    </div>
+                    <div className="form_item">
+                        <input className="password_input" type="password" placeholder="Password" ref={el => this.passwordValue = el}/>
+                    </div>
+                    <div className="form_item button">
+                        <button type="submit" className="submit_button">
+                            Sign Up
+                        </button>
+                    </div>
+                </div> 
+            </form>
         );
     }
 }

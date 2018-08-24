@@ -29,6 +29,7 @@ class Profile extends Component {
     }
 
     render(){
+        const user = localStorage.getItem('user');
         const { articleData : { articles, articlesCount }, profileData: { profile }, currentPage } = this.props;
         if (!profile) {
             return null;
@@ -44,12 +45,12 @@ class Profile extends Component {
                     <div className="articles_filter">
                         <div className="filter_item active">
                             <Link to={`/@${profile.username}`}>
-                                My Articles
+                                {user && user === profile.username ? "My Articles" : "Articles"}
                             </Link>
                         </div>
                         <div className="filter_item">
                             <Link to={`/@${profile.username}/favorites`}>
-                                Favorited Articles
+                                {user && user === profile.username ? "My Favorite Articles" : "Favorite Articles"}
                             </Link>
                         </div>
                     </div>

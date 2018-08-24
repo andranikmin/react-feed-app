@@ -8,6 +8,10 @@ body {
     font-family: sans-serif;
 }
 
+#root {
+    padding-bottom: 60px;
+}
+
 .container {
     max-width: 1024px;
     padding: 0px 10px;
@@ -15,8 +19,9 @@ body {
 }
 
 .error {
-    color: red;
+    color: #a90c0c;
     margin: 20px;
+    text-align: left;
 }
 
 /**********     header     **********/
@@ -127,7 +132,7 @@ body {
     cursor: pointer;
 }
 
-.is_favorite.favorite,
+.is_favorite.my_favorite,
 .is_favorite:hover {
     border: 1px solid #24b8fb;
     background-color: #24b8fb;
@@ -144,6 +149,10 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.article_link {
+    text-decoration: none;
 }
 
 .article_title {
@@ -212,7 +221,8 @@ body {
     cursor: pointer;
 }
 
-.tag:hover {
+.tag:hover,
+.tag.active {
     background-color: #008ac7;
 }
 
@@ -273,6 +283,10 @@ body {
     margin-bottom: 20px;
 }
 
+.form_item.button{
+    text-align: right;
+}
+
 .email_input,
 .password_input,
 .username_item {
@@ -298,9 +312,12 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    position: absolute;
     right: 0px;
     border-radius: 5px;
+}
+
+.submit_button:focus {
+    outline: 0;
 }
 
 .submit_button:hover {
@@ -385,6 +402,10 @@ body {
     margin-bottom: 8px;
 }
 
+.new_article_item.button {
+    text-align: right;
+}
+
 .new_article_input {
     width: 100%;
     height: 45px;
@@ -408,10 +429,6 @@ body {
     padding: 2px 8px;
     font-size: 18px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.article_form button:hover{
-    background-color: #008ac7;
 }
 
 .github_page {

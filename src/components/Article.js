@@ -21,7 +21,7 @@ class Article extends Component {
     }
 
     render(){
-
+        const user = localStorage.getItem('user');
         const { data : { article }, redirect } = this.props;
         const token = localStorage.getItem('token');
 
@@ -51,7 +51,7 @@ class Article extends Component {
                                 <span>{new Date(article.createdAt).toDateString()}</span>
                             </div>
                         </div>
-                        {token ? 
+                        {user && user === article.author.username ? 
                         <div className="delete_article_block">
                             <span className="delete_article" onClick={() => this.deleteArticle(article.slug)}>
                                 Delete Article

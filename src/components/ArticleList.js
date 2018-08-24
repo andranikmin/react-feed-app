@@ -28,7 +28,7 @@ export default  class ArticleList extends Component {
                 </div>
             );
         }
-        
+
         return (
             <div className="article_list">
                 {articles.map(article => 
@@ -42,20 +42,22 @@ export default  class ArticleList extends Component {
                                     {article.author.username}
                                 </Link>
                             </div>
-                            <div className={article.favorited ? "is_favorite favorite" : "is_favorite"}
-                             onClick={() => this.handleClick(article.slug, article.favorited)}>
+                            <div  className={article.favorited ? "is_favorite my_favorite" : "is_favorite"}
+                                onClick={() => this.handleClick(article.slug, article.favorited)}>
                                 <img src={favorite} />
                                 <span className="favorite_count">{article.favoritesCount}</span>
                             </div>
                         </div>
                         <div className="article_info">
                             <div> 
-                                <div className="article_title">
-                                    {article.title}
-                                </div>
-                                <div className="article_description">
-                                    {article.description}
-                                </div>
+                                <Link className="article_link" to={`/article/${article.slug}`}>
+                                    <div className="article_title">
+                                        {article.title}
+                                    </div>
+                                    <div className="article_description">
+                                        {article.description}
+                                    </div>
+                                </Link>
                             </div>
                             <div className="article_date">  
                                 {new Date(article.createdAt).toDateString()}

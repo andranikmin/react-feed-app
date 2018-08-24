@@ -27,20 +27,24 @@ class Login extends Component {
         }
        
         return (
-            <div className="form_box">
-                <h1>Sign In</h1>
-                <p><Link to="/register">Need an account?</Link></p>
-                {loginError && this.showError()}
-                <div className="form_item">
-                    <input className="email_input" placeholder="Email" defaultValue="andranikminasyan1@gmail.com" ref={el => this.EmailValue = el}/>
+            <form onSubmit={this.handleClickCheckLogin}>
+                <div className="form_box">
+                    <h1>Sign In</h1>
+                    <p><Link to="/register">Need an account?</Link></p>
+                    {loginError && this.showError()}
+                    <div className="form_item">
+                        <input className="email_input" placeholder="Email" ref={el => this.EmailValue = el}/>
+                    </div>
+                    <div className="form_item">
+                        <input className="password_input" type="password" placeholder="Password" ref={el => this.PasswordValue = el}/>
+                    </div>
+                    <div className="form_item button">
+                        <button type="submit" className="submit_button">
+                            Sign In
+                        </button>
+                    </div>
                 </div>
-                <div className="form_item">
-                    <input className="password_input" type="password" placeholder="Password" ref={el => this.PasswordValue = el}/>
-                </div>
-                <button className="submit_button" onClick={this.handleClickCheckLogin}>
-                    Sign In
-                </button>
-            </div>
+            </form>
         );
     }
 }

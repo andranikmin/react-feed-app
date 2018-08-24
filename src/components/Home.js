@@ -35,7 +35,7 @@ class Home extends Component {
                             <ArticleList articles={data.articles} onSetFavorite={this.props.setFavorite}/>
                         </div>
                         <div className="tagsGroup">
-                            <TagList tagData={tagData} fetching={fetching} 
+                            <TagList selectedTag={filterTag} tagData={tagData} fetching={fetching} 
                             onTagClick={this.props.getArticlesData} />
                         </div>
                     </div>

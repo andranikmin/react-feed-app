@@ -50,6 +50,7 @@ export const checkLogin = (email, password) => {
     return dispatch => UserService.checkLogin(email, password).then(data => {
         if(data.user) {
             localStorage.setItem('token', data.user.token);
+            localStorage.setItem('user', data.user.username);
             dispatch(profileSuccess(data.user));
             dispatch(loginSuccess(data.user));
         } else {
@@ -62,6 +63,7 @@ export const register = (username, email, password) => {
     return dispatch => UserService.register(username, email, password).then(data => {
         if(data.user) {
             localStorage.setItem('token', data.user.token);
+            localStorage.setItem('user', data.user.username);
             dispatch(profileSuccess(data.user));
             dispatch(registerSuccess());
         } else {
