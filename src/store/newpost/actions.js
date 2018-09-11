@@ -1,5 +1,4 @@
 import ArticleService from "../../services/ArticleService";
-import { API_URL } from "../../config";
 
 export const PUBLISH_ARTICLE_SUCCES = 'PUBLISH_ARTICLE_SUCCES';
 export const PUBLISH_ARTICLE_FAILURE = 'PUBLISH_ARTICLE_FAILURE';

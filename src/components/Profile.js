@@ -38,7 +38,7 @@ class Profile extends Component {
         return (
             <div className="profile_page">
                 <div className="profile_page_banner">
-                    <img className="profile_page_avatar" src={profile.image}/>
+                    <img className="profile_page_avatar" src={profile.image || "https://static.productionready.io/images/smiley-cyrus.jpg"}/>
                     <h3 className="profile_page_username">{profile.username}</h3>
                 </div>
                 <div className="container">

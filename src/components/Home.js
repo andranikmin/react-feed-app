@@ -2,23 +2,62 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import ArticleList from '../components/ArticleList';
-import Pagination from '../components/Pagination';
-import TagList from '../components/TagList';
+import ArticleList from './ArticleList';
+import Pagination from './Pagination';
+import TagList from './TagList';
+import Loading from './Loading';
 import { getArticlesData, setFavorite } from '../store/articleList/actions';
 import { getTagsData } from '../store/tag/actions';
 
 class Home extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            loading: false,
+            tagName: null
+        }
+    }
+
+    handleGetArticlesData(tagName){
+
+        this.setState(prevState => ({
+            loading: !prevState.loading,
+            tagName
+        }));
+    }
+
     componentDidMount() {
         this.props.getArticlesData();
         this.props.getTagsData();
     }
 
+    componentDidUpdate(){
+        if(this.state.loading){
+            this.props.getArticlesData(this.state.tagName);      
+        }
+    }
+
+    shouldComponentUpdate(){
+        if(this.state.loading){
+            this.setState({
+                loading: false,
+                tagName: null
+        }); 
+            return false;
+        }
+        return true;  
+    }
+
     render() {
-        const { data, tagData, fetching, filterTag, currentPage } = this.props;
+        const { data, tagData, filterTag, currentPage } = this.props;
 
         return (
             <div className="homepage">
+                {this.state.loading ? 
+                    <Loading />
+                    : null
+                }
                 <div className="homepage_banner">
                     <h1>Test project</h1>
                 </div>
@@ -27,7 +66,7 @@ class Home extends Component {
                         <div className="articlesGroup">
                             <div className="articles_filter">
                                 <span className={`filter_item ${!filterTag ? "active" : ""}`} 
-                                    onClick={() => this.props.getArticlesData()}>
+                                    onClick={() => this.handleGetArticlesData()}>
                                     All articles
                                 </span>
                                 {filterTag && <span className="filter_item active">#{filterTag}</span>}
@@ -35,8 +74,8 @@ class Home extends Component {
                             <ArticleList articles={data.articles} onSetFavorite={this.props.setFavorite}/>
                         </div>
                         <div className="tagsGroup">
-                            <TagList selectedTag={filterTag} tagData={tagData} fetching={fetching} 
-                            onTagClick={this.props.getArticlesData} />
+                            <TagList selectedTag={filterTag} tagData={tagData} 
+                            onTagClick={(tag) => this.handleGetArticlesData(tag)} />
                         </div>
                     </div>
                     {data.articlesCount > 10 && 
@@ -57,7 +96,6 @@ const mapStateToProps = (state) => {
     return {
         data,
         tagData,
-        fetching,
         filterTag,
         currentPage
     };

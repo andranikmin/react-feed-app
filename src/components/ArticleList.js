@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import Loading from './Loading';
 import favorite from '../assets/images/favorite.png';
 
 
@@ -17,7 +17,7 @@ export default  class ArticleList extends Component {
 
         if (!articles) {
             return (
-                <div className="loading">Loading...</div>
+                <Loading />
             );
         }
 
@@ -36,8 +36,8 @@ export default  class ArticleList extends Component {
                         <div className="article_banner">
                             <div className="user_info">
                                 <Link to={`/@${article.author.username}`}>
-                                    <img className="user_avatar_icon" src={article.author.image} />
-                                </Link>
+                                    <img className="user_avatar_icon" src={article.author.image || "https://static.productionready.io/images/smiley-cyrus.jpg"} />
+                                </Link> 
                                 <Link className="username_author" to={`/@${article.author.username}`}>
                                     {article.author.username}
                                 </Link>

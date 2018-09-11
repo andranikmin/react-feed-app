@@ -32,9 +32,9 @@ export default class Server {
 
         return fetch(request)
             .then(
-                (response) => (
-                    response.json()
-                ),
+                (response) => { 
+                    return response.json()
+                },
                 (error) => {
                     console.log(error);
                 }
