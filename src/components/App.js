@@ -116,6 +116,7 @@ const mapDispatchToProps = (dispatch) => ({
     getCurrentUser(){ 
         dispatch(getProfile())
     },
+
     logOut(){ 
         dispatch(logOut())
     },
